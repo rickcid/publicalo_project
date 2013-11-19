@@ -5,9 +5,7 @@ class PostsController < ApplicationController
     @post = Post.all
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def new
     @post = Post.new
@@ -15,22 +13,21 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = User.first
+    @post.user = User.first # Change once I have authentication
 
     if @post.save
-      flash[:notice] = "Exito, has publicado!"
+      flash[:notice] = "Felicidades, has publicado!"
       redirect_to posts_path
     else
       render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "Exito, has actualizado!"
+      flash[:notice] = "Exito, tu archivo se ha actualizado!"
       redirect_to posts_path(@post)
     else
       render :edit
