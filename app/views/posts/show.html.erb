@@ -12,3 +12,11 @@
 	<%= @post.description %>
 </p>
 <hr/>
+
+<%= form_for @comment do |f| %>
+  <div class='control-group'>
+    <%= f.label :Commentario %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit "Agrega Tu Commentario", class: "btn btn-primary" %>
+<% end %>
