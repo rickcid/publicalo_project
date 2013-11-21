@@ -29,6 +29,6 @@
     <em>"<%= comment.body %>"</em>
     </br>
     <span class = 'quiet'>Publicado por</span> <%= comment.user.username %>
-    <small>el <%= comment.created_at %></small>
+    <small>el <%= display_datetime(comment.created_at) %></small>
   </div>
 <% end %>

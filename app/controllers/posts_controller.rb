@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.user = User.first # Change once I have authentication
 
     if @post.save
-      flash[:notice] = "Felicidades, has publicado!"
+      flash[:notice] = "Felicidades, has publicado."
       redirect_to posts_path
     else
       render :new
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description, category_ids:[])
   end
 
   def set_post
