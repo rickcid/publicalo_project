@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      flash[:notice] = "Felicidades, has creado una nueva categoria!"
+      flash[:notice] = "Felicidades, has creado una nueva categoria."
       redirect_to posts_path
     else
       render :new

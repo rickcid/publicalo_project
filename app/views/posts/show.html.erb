@@ -13,10 +13,22 @@
 </p>
 <hr/>
 
-<%= form_for @comment do |f| %>
+<%= form_for [@post, @comment] do |f| %>
+  <%= render 'shared/errors', obj: @comment %>
   <div class='control-group'>
-    <%= f.label :Commentario %>
-    <%= f.text_area :body %>
+    <%= f.label :Commentario, 'Deja un commentario' %>
+    <%= f.text_area :body, rows: 3, class: 'span4' %>
   </div>
   <%= f.submit "Agrega tu commentario", class: "btn btn-primary" %>
+<% end %>
+
+<h5>Commentarios:</h5>
+
+<% @post.comments.each do |comment| %>
+  <div class="well span8">
+    <em>"<%= comment.body %>"</em>
+    </br>
+    <span class = 'quiet'>Publicado por</span> <%= comment.user.username %>
+    <small>el <%= comment.created_at %></small>
+  </div>
 <% end %>
