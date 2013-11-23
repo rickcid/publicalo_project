@@ -1,0 +1,15 @@
+<%= render 'shared/content_title', title: 'Iniciar sesión' %>
+
+<div class='well'>
+  <%= form_tag '/login' do %>
+    <div class='control-group'>
+      <%= label_tag :username, 'Nombre de usuario' %>
+      <%= text_field_tag :username, params[:username] || '' %>
+    </div>
+    <div class='control-group'>
+      <%= label_tag :password, 'Contraseña' %>
+      <%= password_field_tag :password, params[:password] || '' %>
+    </div>
+    <%= submit_tag "Iniciar sesión", class: 'btn btn-success' %>
+  <% end %>
+</div>
