@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
+  before_action :require_user, except: [:show, :index]
 
   def index
     @post = Post.all
@@ -15,10 +16,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = User.first # Change once I have authentication
+    @post.user = current_user
 
     if @post.save
-      flash[:notice] = "Felicidades, has publicado."
+      flash[:notice] = "Felicidades, has publicado!"
       redirect_to posts_path
     else
       render :new

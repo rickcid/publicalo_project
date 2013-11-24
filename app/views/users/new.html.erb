@@ -1,0 +1,16 @@
+<%= render 'shared/content_title', title: 'Regístrate' %>
+
+<div class='well'>
+  <%= form_for @user do |f| %>
+  <%= render 'shared/errors', obj: @user %>
+    <div class='control-group'>
+      <%= f.label :username, 'Nombre de usario' %>
+      <%= f.text_field :username %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password, 'Contraseña' %>
+      <%= f.password_field :password %>
+    </div>
+    <%= f.submit "¡Regístrate!", class: 'btn btn-success' %>
+  <% end %>
+</div>

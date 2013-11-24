@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.where(username: params[:username]).first
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = "Felicidades, has iniciado tu sesion."
+      flash[:notice] = "Felicidades, ahora puedes publicar, commentar, y votar!"
       redirect_to root_path
     else
       flash[:error] = "Existe un problema con tu nombre o contrasena."

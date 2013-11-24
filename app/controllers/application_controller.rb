@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def require_user
+    if !logged_in?
+      flash[:error] = "Para poder acceder es necesario iniciar sesion."
+      redirect_to root_path
+    end
+  end
 end
