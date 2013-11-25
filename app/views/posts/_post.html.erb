@@ -4,12 +4,12 @@
 		<h4><%= link_to post.title, fix_url(post.url) %></h4>
 		<p><%= post.description %></p>
 		<p>
-			<span class = 'quiet'>Publicado por</span> <%= post.user.username %>
+			<span class = 'quiet'>Publicado por</span> <%= link_to post.user.username, user_path(post.user) %>
 			<small>el <%= display_datetime(post.created_at) %></small>
 		</p>
 		<small>
 			<span>
-				<%= link_to("#{post.comments.size} comments", post_path(post)) %>
+				<%= link_to("#{post.comments.size} commentarios", post_path(post)) %>
 			</span>
 		</small>
 	</div>
