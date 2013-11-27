@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index]
 
   def index
-    @post = Post.all
+    @post = Post.all.sort_by{|x| x.total_votes}.reverse
   end
 
   def show
@@ -36,6 +36,12 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+
+def vote
+    Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    flash[:notice] = "Tu voto fue agregado."
+    redirect_to :back
+end
 
   private
 
