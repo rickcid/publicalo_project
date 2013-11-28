@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment =Comment.new
+    @comment = @post.comments.build
   end
 
   def new
@@ -37,11 +37,11 @@ class PostsController < ApplicationController
     end
   end
 
-def vote
+  def vote
     Vote.create(voteable: @post, user: current_user, vote: params[:vote])
     flash[:notice] = "Tu voto fue agregado."
     redirect_to :back
-end
+  end
 
   private
 
