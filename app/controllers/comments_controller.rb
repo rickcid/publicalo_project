@@ -13,4 +13,8 @@ before_action :require_user
       render 'posts/show'
     end
   end
+
+  def vote
+  end
+  
 end
