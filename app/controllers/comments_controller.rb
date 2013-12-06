@@ -15,6 +15,16 @@ before_action :require_user
   end
 
   def vote
+    comment = Comment.find(params[:id])
+    vote = Vote.create(voteable: comment, user: current_user, vote: params[:vote])
+    
+    if vote.valid?
+      flash[:notice] = "Tu voto fue agregado."
+    else
+      flash[:error] = "Se permite votar solo una vez."
+    end
+    
+    redirect_to :back
   end
-  
+
 end

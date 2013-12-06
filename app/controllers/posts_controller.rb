@@ -38,8 +38,14 @@ class PostsController < ApplicationController
   end
 
   def vote
-    Vote.create(voteable: @post, user: current_user, vote: params[:vote])
-    flash[:notice] = "Tu voto fue agregado."
+    vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    
+    if vote.valid?
+      flash[:notice] = "Tu voto fue agregado." 
+    else
+      flash[:error] = "Se permite votar solo una vez."
+    end
+    
     redirect_to :back
   end
 
