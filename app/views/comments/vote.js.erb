@@ -1,5 +1,5 @@
 <% if @vote.valid? %>
-  $("#comment_<%=@comment.id%>_votes").html(<%=@comment.total_votes%>);
+  $("#comment_<%=@comment.id%>_votes").html("<%=pluralize(@comment.total_votes, 'voto') %>");
 <% else %>
   alert("Se permite votar solo una vez.");
 <% end %>

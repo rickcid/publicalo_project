@@ -1,5 +1,5 @@
 <% if @vote.valid? %>
-  $("#post_<%=@post.id%>_votes").html(<%=@post.total_votes%>);
+  $("#post_<%=@post.id%>_votes").html("<%=pluralize(@post.total_votes, 'voto') %>");
 <% else %>
   alert("Se permite votar solo una vez.");
 <% end %>
