@@ -6,7 +6,7 @@
       <% end %>
       <br/>
     <% end %>
-    <span id='<%="post_#{post.id}_votes"%>'><%= post.total_votes %></span> votos
+    <span id='<%="post_#{post.id}_votes"%>'><%= post.total_votes %></span> <%= pluralize_without_count(post.total_votes, 'vote')%>
     <br/>
     <% if logged_in? %>
       <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
@@ -24,7 +24,7 @@
 		</p>
 		<small>
 			<span>
-				<%= link_to("#{post.comments.size} commentarios", post_path(post)) %>
+				<%= link_to("#{pluralize(post.comments.size, 'commentario')}", post_path(post)) %>
 			</span>
 		</small>
 	</div>

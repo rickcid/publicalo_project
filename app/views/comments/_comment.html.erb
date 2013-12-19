@@ -8,10 +8,10 @@
       <% end %>
       <br/>
     <% end %>
-    <span id='<%="comment_#{comment.id}_votes"%>'><%= comment.total_votes %></span> votos
+    <span id='<%="comment_#{comment.id}_votes"%>'><%= comment.total_votes %></span> <%= pluralize_without_count(comment.total_votes, 'vote')%>
     <br/>
     <% if logged_in? %>
-      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: ' post', 'data-remote' => true do %>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', 'data-remote' => true do %>
         <i class='icon-arrow-down'></i>
       <% end %>
     <% end %>
