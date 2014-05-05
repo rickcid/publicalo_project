@@ -1,6 +1,12 @@
 module ApplicationHelper
   def fix_url(url)
-    url.starts_with?('http://') ? url : "http://#{url}"
+    if url.starts_with?("http://")
+      url
+    elsif url.starts_with?("https://")
+      url
+    else
+    "http://#{url}"
+    end
   end
 
   def pluralize_without_count(count, noun)
